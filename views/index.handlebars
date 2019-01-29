@@ -1,0 +1,51 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="mx-auto text-center">
+      <img style="width:15em;" src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-fast-food-hamburger-flat-icon-by-vexels.png">
+      <h1 class="text-danger display-4">Eat-Da-Burger!</h1>
+      <div class="row justify-content-between py-3">
+        <div class="col-5 px-3">
+          {{#each burgers}}
+          {{#unless devoured}}
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-danger" disabled>{{id}}. {{burger_name}}</button>
+            </div>
+            <input type="text" class="form-control" id="customer{{id}}" placeholder="Customer Name?">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-success devoure-burger" data-id="{{id}}">DEVOURE!</button>
+            </div>
+          </div>
+          {{/unless}}
+          {{/each}}
+        </div>
+        <div class="col-5 px-3">
+          {{#each burgers}}
+          {{#if devoured}}
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-sm btn-dark" disabled>{{id}}. {{burger_name}}</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-dark form-control" disabled>DEVOURED
+              BY {{customer.customer_name}}!</button>
+          </div>
+          {{/if}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <form class="add-burger-form justify-content-center">
+            <div class="form-group">
+              <textarea class="form-control" id="burger-name" rows="3"></textarea>
+              <span class="text-danger border-danger px-1" id="error"></span>
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-2">Submit!</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
